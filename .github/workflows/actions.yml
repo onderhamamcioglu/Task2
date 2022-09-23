@@ -68,7 +68,7 @@ jobs:
         #with:
         #  kustomize-version: 4.5.4
         run: |-
-          snap remove kustomize
+          sudo snap remove kustomize
           sudo curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
           sudo mv kustomize /usr/local/bin/
 
