@@ -75,6 +75,7 @@ jobs:
       - name: Update deploy image
         # working-directory: deploy
         run: |-
+          cd k8s
           kustomize edit set image "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:${{ steps.vars.outputs.docker_tag }}"
           cat kustomization.yaml
           kustomize build . | kubectl apply -f -
