@@ -72,7 +72,7 @@ jobs:
           chmod u+x ./kustomize  
 
       - name: Update deploy image
-        working-directory: deploy
+        # working-directory: deploy
         run: |-
           ./kustomize edit set image "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:${{ steps.vars.outputs.docker_tag }}"
           cat kustomization.yaml
