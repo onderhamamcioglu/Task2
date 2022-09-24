@@ -14,4 +14,4 @@ sağlanması
 
 - [x] Analizlerden geçmiş başarılı imajların otomatik olarak bir Kubernetes cluster'ına (Local k8s, AKS, ECS, GKS vb..) teslimatının
 "deployment" yapılması.
-- [Deployed Page on GKE Cluster](http://34.141.24.244:8080/)
+- ![GitHub CI](https://github.com/onderhamamcioglu/Task2/actions/workflows/pipeline.yml/badge.svg)
