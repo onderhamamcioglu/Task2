@@ -49,13 +49,13 @@ jobs:
         run: |-
           docker login ghcr.io -u ${{ secrets.GIT_USER }} -p ${{ secrets.GIT_KEY }}
 
+      # Scan and Test Image
       - name: Build and Push Test Image to Private Registry
         run: |-
           docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar \
             --tag "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest" .
           docker push "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest"
 
-      # Scan and Test Image
         uses: azure/container-scan@v0
         with:
           image-name: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest # loginServerlUrl/ would be empty if it's hosted on dockerhub; ${{ github.sha }} could also be replaced with any desired image tag
