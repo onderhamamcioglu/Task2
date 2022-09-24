@@ -13,7 +13,6 @@
 # docker tag 99d2a3b0ef5e ghcr.io/onderhamamcioglu/task2:latest
 # docker push ghcr.io/onderhamamcioglu/task2:latest
 FROM openjdk:18.0.2-jdk
-ARG JAR_FILE=target/*.jar
 WORKDIR /
-COPY ${JAR_FILE} app.jar
+COPY build/libs/Task2-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
