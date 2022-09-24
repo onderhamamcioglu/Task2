@@ -53,7 +53,7 @@ jobs:
       - name: Scan Image
         uses: ISID/build-and-scan-image@main
         with:
-          tag: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:latest
+          tag: $IMAGE:test
           path: .
 
       # Build the Docker image
