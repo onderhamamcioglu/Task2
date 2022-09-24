@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Build|Push|Deploy
 
 on:
   push:
@@ -10,8 +10,8 @@ env:
   IMAGE: task2
 
 jobs:
-  build-push:
-    name: Build, Push and Deploy App to GKE
+  build-push-deploy:
+    name: Build, Push to GCHR and Deploy to GKE
     runs-on: ubuntu-latest
 
     steps:
