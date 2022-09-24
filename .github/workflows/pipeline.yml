@@ -1,4 +1,4 @@
-name: Build|Test|Push|Deploy
+name: Pipeline
 
 on:
   push:
@@ -11,8 +11,8 @@ env:
   IMAGE_TEST: task2_test
 
 jobs:
-  build-test-push-deploy:
-    name: Build, Push to GCHR and Deploy to GKE
+  Pipeline:
+    name: Pipeline
     runs-on: ubuntu-latest
 
     steps:
@@ -49,16 +49,6 @@ jobs:
         run: |-
           docker login ghcr.io -u ${{ secrets.GIT_USER }} -p ${{ secrets.GIT_KEY }}
 
-      # Scan and Test Image
-      - name: Build and Push Test Image to Private Registry
-        run: |-
-          docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar \
-            --tag "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest" .
-
-      - uses: azure/container-scan@v0
-        with:
-          image-name: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest
-
       # Build the Docker image
       - name: Build
         run: |-
@@ -67,6 +57,14 @@ jobs:
           
           docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar \
             --tag "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:latest" .
+
+      # Scan Image Before Push
+      - name: Scan Image
+        uses: Azure/container-scan@v0
+        with:
+          image-name: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:${{ steps.vars.outputs.docker_tag }}
+          severity-threshold: CRITICAL
+          run-quality-checks: true
 
       # Push the Docker image to GitHub Container Registry
       - name: Publish
