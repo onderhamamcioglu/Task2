@@ -12,5 +12,5 @@ açıp, temel Work Item Management ihtiyaçları için örnek bir iki iş maddes
 - [ ]  Oluşan paketlerin (imajların) bir ImageScanner (dockerhub, harbor vb..) çözümünde belirli aralıklarla analize girmesinin
 sağlanması
 
-- [ ] Analizlerden geçmiş başarılı imajların otomatik olarak bir Kubernetes cluster'ına (Local k8s, AKS, ECS, GKS vb..) teslimatının
+- [x] Analizlerden geçmiş başarılı imajların otomatik olarak bir Kubernetes cluster'ına (Local k8s, AKS, ECS, GKS vb..) teslimatının
 "deployment" yapılması.
