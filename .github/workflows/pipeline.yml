@@ -56,12 +56,10 @@ jobs:
           
           docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar \
             --tag "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:latest" .
+            
+          docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar \
+            --tag "$IMAGE:test" .
       
-      # Scan the Image
-      - uses: azure/container-scan@v0
-        with:
-          image-name: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:${{ steps.vars.outputs.docker_tag }}
-
       # Scan Image Before Push
       - name: Scan Image
         uses: Azure/container-scan@v0
