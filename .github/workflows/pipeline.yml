@@ -1,4 +1,4 @@
-name: Build|Push|Deploy
+name: Build|Test|Push|Deploy
 
 on:
   push:
@@ -8,9 +8,10 @@ on:
 env:
   DEPLOYMENT_NAME: task2  # Add your deployment name here.
   IMAGE: task2
+  IMAGE_TEST: task2_test
 
 jobs:
-  build-push-deploy:
+  build-test-push-deploy:
     name: Build, Push to GCHR and Deploy to GKE
     runs-on: ubuntu-latest
 
@@ -47,6 +48,19 @@ jobs:
       - name: Login
         run: |-
           docker login ghcr.io -u ${{ secrets.GIT_USER }} -p ${{ secrets.GIT_KEY }}
+
+      - name: Build and Push Test Image to Private Registry
+        run: |-
+          docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar \
+            --tag "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest" .
+          docker push "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest"
+
+      # Scan and Test Image
+        uses: azure/container-scan@v0
+        with:
+          image-name: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest # loginServerlUrl/ would be empty if it's hosted on dockerhub; ${{ github.sha }} could also be replaced with any desired image tag
+          username: ${{ secrets.GIT_USER }}
+          password: ${{ secrets.GIT_KEY }}
 
       # Build the Docker image
       - name: Build
