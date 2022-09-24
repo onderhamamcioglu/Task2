@@ -8,6 +8,7 @@ on:
 env:
   DEPLOYMENT_NAME: task2  # Add your deployment name here.
   IMAGE: task2
+  IMAGE_TEST: task2_test
 
 jobs:
   Pipeline:
@@ -56,12 +57,16 @@ jobs:
           
           docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar \
             --tag "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:latest" .
-      
+          
+          docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar -t $IMAGE:test .
+
       # Scan Image Before Push
       - name: Scan Image
-        uses: anchore/scan-action@v3
+        uses: Azure/container-scan@v0
         with:
-          image: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:${{ steps.vars.outputs.docker_tag }}
+          image-name: $IMAGE:test
+          severity-threshold: CRITICAL
+          run-quality-checks: true
 
       # Push the Docker image to GitHub Container Registry
       - name: Publish
