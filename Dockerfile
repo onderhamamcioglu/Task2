@@ -3,7 +3,7 @@
 #test the built jar file
 # java -jar .\build\libs\Task2-0.0.1-SNAPSHOT.jar
 #build docker image
-# docker build --build-arg JAR_FILE=build/libs/Task2-0.0.1-SNAPSHOT.jar -t task2/latest .
+# docker build --tag task2:latest .
 #test docker image
 # docker run -d -p 8080:8080 task2/latest:latest
 # curl http://localhost:8080
@@ -13,7 +13,6 @@
 # docker tag 99d2a3b0ef5e ghcr.io/onderhamamcioglu/task2:latest
 # docker push ghcr.io/onderhamamcioglu/task2:latest
 FROM openjdk:18.0.2-jdk
-WORKDIR /usr/src/app
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+WORKDIR /
+COPY build/libs/Task2-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
