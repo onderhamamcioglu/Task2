@@ -56,7 +56,7 @@ jobs:
             --tag "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest" .
           docker push "ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest"
 
-        uses: azure/container-scan@v0
+      - uses: azure/container-scan@v0
         with:
           image-name: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE_TEST:latest
           username: ${{ secrets.GIT_USER }}
