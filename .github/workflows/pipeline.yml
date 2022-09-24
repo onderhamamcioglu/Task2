@@ -19,6 +19,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      # Scan Image Before Push
+      - name: Scan Image
+        uses: ISID/build-and-scan-image@main
+        with:
+          tag: $IMAGE:test
+          path: .
+          trivy-severity: CRITICAL
+
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
         with:
@@ -48,13 +56,6 @@ jobs:
       - name: Login
         run: |-
           docker login ghcr.io -u ${{ secrets.GIT_USER }} -p ${{ secrets.GIT_KEY }}
-
-      # Scan Image Before Push
-      - name: Scan Image
-        uses: ISID/build-and-scan-image@main
-        with:
-          tag: $IMAGE:test
-          path: .
 
       # Build the Docker image
       - name: Build
