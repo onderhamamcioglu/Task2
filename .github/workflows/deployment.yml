@@ -9,7 +9,7 @@ spec:
       app: task2
   strategy:
     rollingUpdate:
-      maxSurge: 1
+      maxSurge: 0
       maxUnavailable: 1
   minReadySeconds: 5
   template:
