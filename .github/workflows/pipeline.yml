@@ -64,7 +64,7 @@ jobs:
       - name: Scan Image
         uses: Azure/container-scan@v0
         with:
-          image-name: ghcr.io/${{ secrets.GIT_USER }}/$IMAGE:${{ steps.vars.outputs.docker_tag }}
+          image-name: $IMAGE:test
           severity-threshold: CRITICAL
           run-quality-checks: true
 
