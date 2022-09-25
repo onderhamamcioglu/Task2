@@ -8,7 +8,7 @@ açıp, temel Work Item Management ihtiyaçları için örnek bir iki iş maddes
 - [x]  Projenin dockerize hale getirilip, container imajının oluşturulması ve bir container registery'e aktarılması.
 - [Container Registry](https://ghcr.io/onderhamamcioglu/task2)
 - [x]  Pipeline tasarımı yapıp projenin her değişiklikle derlenmesinin ve paketlerin (artifact'larının) oluşmasının sağlanması
-- [Pipeline](https://github.com/onderhamamcioglu/Task2/blob/prod/.github/workflows/actions.yml)
+- [Pipeline](https://github.com/onderhamamcioglu/Task2/blob/prod/.github/workflows/pipeline.yml)
 - [x]  Oluşan paketlerin (imajların) bir ImageScanner (dockerhub, harbor vb..) çözümünde belirli aralıklarla analize girmesinin
 sağlanması
 - [Build and Scan Image](https://github.com/marketplace/actions/build-and-scan-image) (Pipeline içerisinde kullanılan scanner)
