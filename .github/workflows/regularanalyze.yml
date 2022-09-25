@@ -1,6 +1,7 @@
 name: Regular Analyze
-- description: "Analyze Every 5 Minutes"
-  schedule: every 5 minutes
+on:
+  schedule:
+    - cron: "*/5 * * * *"
   
 env:
   IMAGE_TEST: task2_test
