@@ -1,0 +1,26 @@
+name: Planned Analyze
+
+on:
+    schedule:
+        - cron: "0 0 * * *"
+  
+env:
+  IMAGE: task2
+  
+jobs:
+  Analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      # Scan Image Before Push
+      - name: Scan Image
+        uses: ISID/build-and-scan-image@main
+        with:
+          tag: $IMAGE:test
+          path: .
+          trivy-severity: CRITICAL
+  
