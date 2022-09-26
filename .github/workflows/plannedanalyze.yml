@@ -5,6 +5,7 @@ on:
   
 env:
   IMAGE: task2
+  LOCAL_PATH: ./
   
 jobs:
   Analyze:
