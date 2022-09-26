@@ -1,14 +1,14 @@
-name: RegularAnalyze
+name: Regular Analyze
 on:
   schedule:
     - cron: "*/5 * * * *"
   
 env:
-  IMAGE_TEST: task2_test
+  IMAGE: task2
   
 jobs:
   Analyze:
-    name: Pipeline
+    name: Analyze
     runs-on: ubuntu-latest
 
     steps:
