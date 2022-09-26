@@ -1,4 +1,4 @@
-name: Regular Analyze
+name: Planned Analyze
 on:
   schedule:
     - cron: "*/5 * * * *"
