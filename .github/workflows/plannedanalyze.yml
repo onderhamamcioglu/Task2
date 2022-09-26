@@ -5,7 +5,6 @@ on:
   
 env:
   IMAGE: task2
-  LOCAL_PATH: ./
   
 jobs:
   Analyze:
@@ -13,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       
       # Scan Image Before Push
       - name: Scan Image
