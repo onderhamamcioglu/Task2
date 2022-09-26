@@ -8,8 +8,7 @@ on:
 env:
   DEPLOYMENT_NAME: task2  # Add your deployment name here.
   IMAGE: task2
-  IMAGE_TEST: task2_test
-
+  
 jobs:
   Pipeline:
     name: Pipeline
