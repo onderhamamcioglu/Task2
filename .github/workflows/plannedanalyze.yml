@@ -1,7 +1,10 @@
 name: Planned Analyze
+
+    
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  push:
+    branches:
+      - prod
   
 env:
   IMAGE: task2
