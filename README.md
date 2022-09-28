@@ -11,7 +11,7 @@ açıp, temel Work Item Management ihtiyaçları için örnek bir iki iş maddes
 - [Pipeline](https://github.com/onderhamamcioglu/Task2/blob/prod/.github/workflows/pipeline.yml)
 - [x]  Oluşan paketlerin (imajların) bir ImageScanner (dockerhub, harbor vb..) çözümünde belirli aralıklarla analize girmesinin
 sağlanması
-- ![Planned Analyze](https://github.com/onderhamamcioglu/Task2/actions/workflows/plannedanalyze.yml/badge.svg?branch=prod) | [Pipeline](https://github.com/onderhamamcioglu/Task2/blob/prod/.github/workflows/plannedanalyze.yml)
+- ![Planned Analyze](https://github.com/onderhamamcioglu/Task2/actions/workflows/plannedanalyze.yml/badge.svg?branch=prod) | [Image Scanner Pipeline](https://github.com/onderhamamcioglu/Task2/blob/prod/.github/workflows/plannedanalyze.yml)
 - [x] Analizlerden geçmiş başarılı imajların otomatik olarak bir Kubernetes cluster'ına (Local k8s, AKS, ECS, GKS vb..) teslimatının
 "deployment" yapılması.
 - ![Pipeline](https://github.com/onderhamamcioglu/Task2/actions/workflows/pipeline.yml/badge.svg)
